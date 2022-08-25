@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="includes/header">
+    <title>Home</title>
+</head>
+<body>
+<nav th:replace="includes/navbar :: navbar"></nav>
+
+<h1>Hello Chuks</h1>
+<a href="user-registration.html">Login</a>
+<div class="container">
+    <h4>Babbage Sound And Audio Reinforcements</h4>
+    <div class="card-header my-3">All Products</div>
+    <div class="row my-3">
+        <div class="col-md-3 my-3 mx-3 justify-content-between">
+            <div class="card w-150" style="width: 18rem;">
+                <img class="card-img-top-centre" src="product-images/" alt="Card image cap">
+                <div class="card-body">
+                    <h6 class="card-title">Product: th:"@{}"</h6>
+                    <h6 class="price">Price: $<%=product.getPrice()%> </h6>
+                    <h6 class="category">Category: <%=product.getCategory()%></h6>
+                    <div class="mt-3 d-flex text-centre justify-content-around">
+                        <a href="" style="margin: 2px" class="btn btn-dark">Add to Cart</a>
+                        <a href="#" style="margin: 2px" class="btn btn-primary">Like</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="includes/footer"></div>
+</body>
+</html>
