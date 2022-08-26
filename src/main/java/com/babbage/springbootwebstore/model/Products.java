@@ -32,7 +32,7 @@ public class Products {
     @Column(nullable = false)
     private Long quantity;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String image;
 
 
@@ -44,4 +44,10 @@ public class Products {
         this.image = image;
     }
 
+    public Products(String name, String category, Double price, Long quantity) {
+        this.name = name;
+        this.category = category;
+        this.price = price;
+        this.quantity = quantity;
+    }
 }

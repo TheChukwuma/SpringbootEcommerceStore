@@ -35,8 +35,8 @@ public class UserLoginController {
     @PostMapping
     public String loginUserAccount(@ModelAttribute("user") UserLoginDTO userLoginDTO, HttpSession session, Model model) {
         if(userService.login(userLoginDTO.getEmail(), userLoginDTO.getPassword())){
-            session.setAttribute("auth", userLoginDTO.getEmail());
-            return "redirect:/index";
+            session.setAttribute("userSession", userLoginDTO.getEmail());
+            return "index";
         }
         model.addAttribute("error","Invalid username or password!");
         return "user-login";

@@ -14,4 +14,11 @@ public class ProductDTO {
     private Long quantity;
     private Double price;
     private String image;
+
+    public ProductDTO(String name, String category, Long quantity, Double price) {
+        this.name = name;
+        this.category = category;
+        this.quantity = quantity;
+        this.price = price;
+    }
 }

@@ -1,7 +1,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #2975f0;" th:fragment="navbar">
-    <a class="navbar-brand" href="../index.html">Babbage Electronics</a>
+    <a class="navbar-brand" th:href="@{/}">Babbage Electronics</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,27 +9,40 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="../index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Cart</a>
+                <a class="nav-link" th:href="@{cart}">Cart</a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" th:if="${session.adminSession==null and session.userSession==null}">
                 <a class="nav-link dropdown-toggle" href="../index.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Account
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" th:href="@{user-login}">User Login</a>
-                    <a class="dropdown-item" href="#">Admin Login</a>
+                    <a class="dropdown-item"  th:href="@{user-login}">User Login</a>
+                    <a class="dropdown-item"  th:href="@{admin}">Admin Login</a>
                    </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{products}">Add Product</a>
+            <li class="nav-item" th:if="${session.adminSession}">
+             <a class="nav-link" th:href="@{/products}" th:text="Product" ></a>
+            </li>
+            <li class="nav-item" th:if="${session.adminSession!=null or session.userSession!=null}">
+                <a class="nav-link" th:href="@{/log-out}" th:text="Logout"></a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
+        <form class="form-inline my-2 my-lg-0" >
+            <ul class="navbar-nav mr-auto ">
+                <li class="nav-item " th:if="${session.adminSession}">
+                    <a class="nav-link text-danger" th:text="Admin + ': ' +${session.adminSession.toString()}"></a>
+                </li>
+                <li class="nav-item " th:if="${session.userSession}">
+                    <a class="nav-link text-warning" th:text="User+ ': ' + ${session.userSession.toString()}"></a>
+                </li>
+            </ul>
+
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn bg-dark text-white my-2 my-sm-0" type="submit">Search</button>
         </form>
+
     </div>
 </nav>

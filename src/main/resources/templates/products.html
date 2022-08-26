@@ -9,7 +9,7 @@
 <div class="container">
 
     <br>
-    <button class="btn btn-dark text-white btn-sm"> <a th:href="@{add-product}">Add Product to Store</a></button>
+    <button class="btn btn-dark text-white btn-sm"> <a th:href="@{admin/add-produc}">Add Product to Store</a></button>
     <br>
     <br>
     <div class="card-header text-center bg-primary text-white">Product Management</div>
@@ -33,8 +33,8 @@
             <td th:text="${product.getCategory()}"></td>
             <td th:text="${product.getPrice()}"></td>
             <td th:text="${product.getQuantity()}"></td>
-            <td><a class="btn btn-sm btn-primary" th:href="@{/products/update/{id}(id=${product.getId()})}">Update</a> </td>
-            <td><a class="btn btn-sm btn-danger" href="">Delete</a> </td>
+            <td><a class="btn btn-sm btn-primary" th:href="@{admin/products/update/{id}(id=${product.getId()})}">Update</a> </td>
+            <td><a class="btn btn-sm btn-danger" th:href="@{admin/products/{id}(id=${product.getId()})}">Delete</a> </td>
         </tr>
         </tbody>
     </table>

@@ -22,4 +22,14 @@ public class Admin {
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    public Admin(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 }

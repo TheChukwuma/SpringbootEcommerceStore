@@ -16,7 +16,7 @@
 
     <div class="card-header text-center bg-primary text-white">Add Product To Store</div>
     <div class="card-body">
-        <form th:action="@{/add-product}" method="post" th:object="${product}">
+        <form th:action="@{admin/add-product}" method="post" th:object="${product}">
             <div class="form-group">
                 <label class="control-label" for="name">Product Name</label>
                 <input type="text" class="form-control border-primary" id="name" th:field="*{name}" placeholder=""
